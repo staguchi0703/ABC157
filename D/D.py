@@ -16,6 +16,19 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('D',num_list)
+import numpy as np
+N, M, K = [int(item) for item in input().split()]
+fri_list = [[int(item) for item in input().split()] for _ in range(M)]
+bro_list = [[int(item) for item in input().split()] for _ in range(K)]
 
+grid = np.zeros((N,N), dtype='int')
+
+for i, j in fri_list:
+    grid[i-1,j-1] = 1
+    grid[j-1,i-1] = 1
+
+for i, j in bro_list:
+    grid[i-1,j-1] = 2
+    grid[j-1,i-1] = 2
+
+print(grid)
